@@ -221,8 +221,8 @@ modrinth {
 }
 
 task checkForRefmap() {
-    if (file("././build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar").exists()) {
-        assert zipTree("././build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar")
+    if (file("./build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar").exists()) {
+        assert zipTree("./build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar")
                 .matching { include "the_bumblezone.refmap.json" }.getSingleFile() != null
     }
 }

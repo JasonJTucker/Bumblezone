@@ -1,4 +1,4 @@
-package com.example.examplemod.platform.services;
+package com.telepathicgrunt.the_bumblezone.platform.services;
 
 public interface IPlatformHelper {
 

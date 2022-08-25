@@ -1,6 +1,6 @@
-package com.example.examplemod.platform;
+package com.telepathicgrunt.the_bumblezone.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.telepathicgrunt.the_bumblezone.platform.services.IPlatformHelper;
 import org.quiltmc.loader.api.QuiltLoader;
 
 public class QuiltPlatformHelper implements IPlatformHelper {

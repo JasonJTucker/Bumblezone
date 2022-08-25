@@ -1,6 +1,6 @@
-package com.example.examplemod;
+package com.telepathicgrunt.the_bumblezone;
 
-import com.example.examplemod.platform.Services;
+import com.telepathicgrunt.the_bumblezone.platform.Services;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;

@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package com.telepathicgrunt.the_bumblezone.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.telepathicgrunt.the_bumblezone.Constants;
+import com.telepathicgrunt.the_bumblezone.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 

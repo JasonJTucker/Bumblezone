@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.telepathicgrunt.the_bumblezone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
