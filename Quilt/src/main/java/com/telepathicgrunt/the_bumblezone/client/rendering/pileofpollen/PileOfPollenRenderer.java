@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 // CLIENT-SIDED
 public class PileOfPollenRenderer {
 
-    private static final ResourceLocation TEXTURE_POLLEN = new ResourceLocation(Bumblezone.MODID + ":textures/block/pile_of_pollen.png");
+    private static final ResourceLocation TEXTURE_POLLEN = new ResourceLocation(BumblezoneCommon.MODID + ":textures/block/pile_of_pollen.png");
 
     public static boolean pileOfPollenOverlay(Player playerEntity, PoseStack matrixStack, BlockState blockState)
     {

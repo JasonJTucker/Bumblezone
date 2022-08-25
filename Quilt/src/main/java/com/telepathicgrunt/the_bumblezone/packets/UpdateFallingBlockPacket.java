@@ -12,7 +12,7 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 public class UpdateFallingBlockPacket {
 
-    public static ResourceLocation PACKET_ID = new ResourceLocation(Bumblezone.MODID, "update_falling_blocks_packet");
+    public static ResourceLocation PACKET_ID = new ResourceLocation(BumblezoneCommon.MODID, "update_falling_blocks_packet");
 
     public static void registerPacket() {
         ClientPlayNetworking.registerGlobalReceiver(PACKET_ID,

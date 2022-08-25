@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 public class QueensTradeManager extends SimpleJsonResourceReloadListener implements IdentifiableResourceReloader{
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     public static final QueensTradeManager QUEENS_TRADE_MANAGER = new QueensTradeManager();
-    private final ResourceLocation QUEENS_TRADE_MANAGER_ID = new ResourceLocation(Bumblezone.MODID, "queens_trade_manager");
+    private final ResourceLocation QUEENS_TRADE_MANAGER_ID = new ResourceLocation(BumblezoneCommon.MODID, "queens_trade_manager");
 
     public Object2ObjectOpenHashMap<Item, WeightedRandomList<TradeEntryReducedObj>> tradeReduced = new Object2ObjectOpenHashMap<>();
     public Map<List<TradeEntryObj>, List<TradeEntryObj>> tradeRaw = new HashMap<>();

@@ -15,8 +15,8 @@ public class BzStructures {
     public static final StructureType<GenericOptimizedStructure> GENERIC_OPTIMIZED_STRUCTURE = () -> GenericOptimizedStructure.CODEC;
 
     public static void registerStructures() {
-        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(Bumblezone.MODID, "pollinated_stream"), POLLINATED_STREAM);
-        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(Bumblezone.MODID, "honey_cave_room"), HONEY_CAVE_ROOM);
-        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(Bumblezone.MODID, "generic_optimized_structure"), GENERIC_OPTIMIZED_STRUCTURE);
+        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(BumblezoneCommon.MODID, "pollinated_stream"), POLLINATED_STREAM);
+        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(BumblezoneCommon.MODID, "honey_cave_room"), HONEY_CAVE_ROOM);
+        Registry.register(Registry.STRUCTURE_TYPES, new ResourceLocation(BumblezoneCommon.MODID, "generic_optimized_structure"), GENERIC_OPTIMIZED_STRUCTURE);
     }
 }

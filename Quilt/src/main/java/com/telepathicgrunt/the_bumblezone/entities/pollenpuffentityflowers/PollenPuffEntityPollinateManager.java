@@ -31,7 +31,7 @@ import java.util.Optional;
 public class PollenPuffEntityPollinateManager extends SimpleJsonResourceReloadListener implements IdentifiableResourceReloader {
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().setLenient().disableHtmlEscaping().excludeFieldsWithoutExposeAnnotation().create();
     public static final PollenPuffEntityPollinateManager POLLEN_PUFF_ENTITY_POLLINATE_MANAGER = new PollenPuffEntityPollinateManager();
-    private final ResourceLocation POLLEN_PUFF_ENTITY_POLLINATE_MANAGER_ID = new ResourceLocation(Bumblezone.MODID, "pollen_puff_entity_pollinate_manager");
+    private final ResourceLocation POLLEN_PUFF_ENTITY_POLLINATE_MANAGER_ID = new ResourceLocation(BumblezoneCommon.MODID, "pollen_puff_entity_pollinate_manager");
 
     public record EntryObject(BzNbtPredicate nbtPredicate, WeightedStateProvider weightedStateProvider) {
         public static final Codec<EntryObject> ENTRY_CODEC = RecordCodecBuilder.create((instance) -> instance.group(

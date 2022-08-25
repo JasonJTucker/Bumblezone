@@ -15,7 +15,7 @@ public class BzBlockEntities {
     public static final BlockEntityType<?> INCENSE_CANDLE = FabricBlockEntityTypeBuilder.create(IncenseCandleBlockEntity::new, BzBlocks.INCENSE_BASE_CANDLE).build(null);
 
     public static void registerBlockEntities() {
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(Bumblezone.MODID, "honey_cocoon"), HONEY_COCOON);
-        Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(Bumblezone.MODID, "incense_candle"), INCENSE_CANDLE);
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(BumblezoneCommon.MODID, "honey_cocoon"), HONEY_COCOON);
+        Registry.register(Registry.BLOCK_ENTITY_TYPE, new ResourceLocation(BumblezoneCommon.MODID, "incense_candle"), INCENSE_CANDLE);
     }
 }

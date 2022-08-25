@@ -17,6 +17,7 @@ import com.telepathicgrunt.the_bumblezone.modinit.*;
 import com.telepathicgrunt.the_bumblezone.packets.BeehemothControlsPacket;
 import com.telepathicgrunt.the_bumblezone.packets.BumbleBeeChestplateFlyingPacket;
 import com.telepathicgrunt.the_bumblezone.packets.StinglessBeeHelmetSightPacket;
+import com.telepathicgrunt.the_bumblezone.registration.BzItems;
 import com.telepathicgrunt.the_bumblezone.utils.ThreadExecutor;
 import com.telepathicgrunt.the_bumblezone.world.dimension.BzWorldSavedData;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
@@ -42,7 +43,7 @@ import org.quiltmc.qsl.resource.loader.api.ResourceLoaderEvents;
 public class Bumblezone implements ModInitializer, EntityComponentInitializer {
 
     public static final String MODID = "assets/the_bumblezone";
-    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(Bumblezone.MODID, Bumblezone.MODID);
+    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(BumblezoneCommon.MODID, BumblezoneCommon.MODID);
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
@@ -106,6 +107,8 @@ public class Bumblezone implements ModInitializer, EntityComponentInitializer {
         ResourceLoaderEvents.END_DATA_PACK_RELOAD.register((minecraftServer, resourceManager, throwable) -> QueensTradeManager.QUEENS_TRADE_MANAGER.resolveQueenTrades());
         ServerLifecycleEvents.STARTING.register((a) -> ThreadExecutor.handleServerAboutToStartEvent());
         ServerLifecycleEvents.STOPPING.register((a) -> ThreadExecutor.handleServerStoppingEvent());
+
+        BumblezoneCommon.init();
     }
 
     @Override

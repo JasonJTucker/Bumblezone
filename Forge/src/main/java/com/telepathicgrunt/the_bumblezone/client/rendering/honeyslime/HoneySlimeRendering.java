@@ -1,7 +1,6 @@
 package com.telepathicgrunt.the_bumblezone.client.rendering.honeyslime;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.mobs.HoneySlimeEntity;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -13,8 +12,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class HoneySlimeRendering extends MobRenderer<HoneySlimeEntity, SlimeModel<HoneySlimeEntity>> {
-    private static final ResourceLocation HONEY_TEXTURE = new ResourceLocation(Bumblezone.MODID, "textures/entity/honey_slime.png");
-    private static final ResourceLocation HONEYLESS_TEXTURE = new ResourceLocation(Bumblezone.MODID, "textures/entity/honey_slime_naked.png");
+    private static final ResourceLocation HONEY_TEXTURE = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/honey_slime.png");
+    private static final ResourceLocation HONEYLESS_TEXTURE = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/honey_slime_naked.png");
 
     public HoneySlimeRendering(EntityRendererProvider.Context context) {
         super(context, new SlimeModel<>(context.bakeLayer(ModelLayers.SLIME)), 0.25F);

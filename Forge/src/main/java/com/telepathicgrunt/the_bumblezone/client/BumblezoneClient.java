@@ -1,6 +1,5 @@
 package com.telepathicgrunt.the_bumblezone.client;
 
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.client.items.HoneyCompassItemProperty;
 import com.telepathicgrunt.the_bumblezone.client.items.IncenseCandleColoring;
 import com.telepathicgrunt.the_bumblezone.client.particles.HoneyParticle;
@@ -205,6 +204,6 @@ public class BumblezoneClient {
     }
 
     public static void registerDimensionSpecialEffects(RegisterDimensionSpecialEffectsEvent event) {
-        event.register(new ResourceLocation(Bumblezone.MODID, "sky_property"), new BzSkyProperty());
+        event.register(new ResourceLocation(BumblezoneCommon.MODID, "sky_property"), new BzSkyProperty());
     }
 }

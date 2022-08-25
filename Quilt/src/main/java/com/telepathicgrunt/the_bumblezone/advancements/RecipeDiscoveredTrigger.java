@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RecipeDiscoveredTrigger extends SimpleCriterionTrigger<RecipeDiscoveredTrigger.Instance> {
-    private static final ResourceLocation ID = new ResourceLocation(Bumblezone.MODID, "recipe_discovered");
+    private static final ResourceLocation ID = new ResourceLocation(BumblezoneCommon.MODID, "recipe_discovered");
 
     @Override
     public ResourceLocation getId() {

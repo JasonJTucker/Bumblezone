@@ -15,7 +15,7 @@ public class BzStats {
     public static ResourceLocation HONEY_BEE_LEGGINGS_FLOWER_POLLEN_RL;
 
     private static ResourceLocation registerCustomStat(String key) {
-        ResourceLocation resourcelocation = new ResourceLocation(Bumblezone.MODID, key);
+        ResourceLocation resourcelocation = new ResourceLocation(BumblezoneCommon.MODID, key);
         Registry.register(Registry.CUSTOM_STAT, key, resourcelocation);
         Stats.CUSTOM.get(resourcelocation, StatFormatter.DEFAULT);
         return resourcelocation;

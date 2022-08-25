@@ -13,8 +13,8 @@ public class BzEnchantments {
     public static final NeurotoxinsEnchantment NEUROTOXINS = new NeurotoxinsEnchantment();
 
     public static void registerEnchantment() {
-        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(Bumblezone.MODID, "comb_cutter"), COMB_CUTTER);
-        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(Bumblezone.MODID, "potent_poison"), POTENT_POISON);
-        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(Bumblezone.MODID, "neurotoxins"), NEUROTOXINS);
+        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(BumblezoneCommon.MODID, "comb_cutter"), COMB_CUTTER);
+        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(BumblezoneCommon.MODID, "potent_poison"), POTENT_POISON);
+        Registry.register(Registry.ENCHANTMENT, new ResourceLocation(BumblezoneCommon.MODID, "neurotoxins"), NEUROTOXINS);
     }
 }

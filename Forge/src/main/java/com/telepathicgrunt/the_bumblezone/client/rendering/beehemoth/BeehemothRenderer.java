@@ -1,7 +1,6 @@
 package com.telepathicgrunt.the_bumblezone.client.rendering.beehemoth;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.mobs.BeehemothEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -9,7 +8,7 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BeehemothRenderer extends MobRenderer<BeehemothEntity, BeehemothModel> {
-    private static final ResourceLocation SKIN = new ResourceLocation(Bumblezone.MODID, "textures/entity/beehemoth.png");
+    private static final ResourceLocation SKIN = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/beehemoth.png");
 
     public BeehemothRenderer(EntityRendererProvider.Context context) {
         super(context, new BeehemothModel(context.bakeLayer(BeehemothModel.LAYER_LOCATION)), 0.4F);

@@ -27,10 +27,10 @@ public abstract class BeeArmor extends TickingArmorItem {
 
     public String getArmorTexture() {
         if (transTexture) {
-            return Bumblezone.MODID + ":textures/models/armor/trans_bee_material_layer_" + variant + ".png";
+            return BumblezoneCommon.MODID + ":textures/models/armor/trans_bee_material_layer_" + variant + ".png";
         }
         else {
-            return Bumblezone.MODID + ":textures/models/armor/bee_material_layer_" + variant + ".png";
+            return BumblezoneCommon.MODID + ":textures/models/armor/bee_material_layer_" + variant + ".png";
         }
     }
 

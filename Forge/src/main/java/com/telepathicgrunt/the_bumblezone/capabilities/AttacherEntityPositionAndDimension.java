@@ -18,7 +18,7 @@ public final class AttacherEntityPositionAndDimension {
     // Their instances will hold a lazy that holds the cap.
     private static class EPADCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-        public static final ResourceLocation IDENTIFIER = new ResourceLocation(Bumblezone.MODID, "entity_position_and_dimension");
+        public static final ResourceLocation IDENTIFIER = new ResourceLocation(BumblezoneCommon.MODID, "entity_position_and_dimension");
         private final EntityPositionAndDimension backend = new EntityPositionAndDimension();
         private final LazyOptional<EntityPositionAndDimension> optionalData = LazyOptional.of(() -> backend);
 

@@ -16,8 +16,8 @@ import net.minecraft.util.Mth;
 
 @Environment(EnvType.CLIENT)
 public class HoneySlimeRendering extends MobRenderer<HoneySlimeEntity, SlimeModel<HoneySlimeEntity>> {
-    private static final ResourceLocation HONEY_TEXTURE = new ResourceLocation(Bumblezone.MODID, "textures/entity/honey_slime.png");
-    private static final ResourceLocation HONEYLESS_TEXTURE = new ResourceLocation(Bumblezone.MODID, "textures/entity/honey_slime_naked.png");
+    private static final ResourceLocation HONEY_TEXTURE = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/honey_slime.png");
+    private static final ResourceLocation HONEYLESS_TEXTURE = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/honey_slime_naked.png");
 
     public HoneySlimeRendering(EntityRendererProvider.Context context) {
         super(context, new SlimeModel<>(context.bakeLayer(ModelLayers.SLIME)), 0.25F);

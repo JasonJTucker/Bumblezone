@@ -24,7 +24,7 @@ import net.minecraftforge.client.event.RenderBlockScreenEffectEvent;
 // CLIENT-SIDED
 public class PileOfPollenRenderer {
 
-    private static final ResourceLocation TEXTURE_POLLEN = new ResourceLocation(Bumblezone.MODID + ":textures/block/pile_of_pollen.png");
+    private static final ResourceLocation TEXTURE_POLLEN = new ResourceLocation(BumblezoneCommon.MODID + ":textures/block/pile_of_pollen.png");
 
     public static void pileOfPollenOverlay(RenderBlockScreenEffectEvent event) {
         BlockState blockState = event.getBlockState();

@@ -55,16 +55,16 @@ import org.quiltmc.qsl.block.extensions.api.client.BlockRenderLayerMap;
 
 @Environment(EnvType.CLIENT)
 public class BumblezoneClient implements ClientModInitializer {
-    public static final ResourceLocation SUGAR_WATER_FLUID_STILL = new ResourceLocation(Bumblezone.MODID, "block/sugar_water_still");
-    public static final ResourceLocation SUGAR_WATER_FLUID_FLOWING = new ResourceLocation(Bumblezone.MODID, "block/sugar_water_flow");
-    public static final ResourceLocation HONEY_FLUID_STILL = new ResourceLocation(Bumblezone.MODID, "block/honey_fluid_still");
-    public static final ResourceLocation HONEY_FLUID_FLOWING = new ResourceLocation(Bumblezone.MODID, "block/honey_fluid_flow");
-    public static final ResourceLocation ROYAL_JELLY_FLUID_STILL = new ResourceLocation(Bumblezone.MODID, "block/royal_jelly_fluid_still");
-    public static final ResourceLocation ROYAL_JELLY_FLOWING = new ResourceLocation(Bumblezone.MODID, "block/royal_jelly_fluid_flow");
+    public static final ResourceLocation SUGAR_WATER_FLUID_STILL = new ResourceLocation(BumblezoneCommon.MODID, "block/sugar_water_still");
+    public static final ResourceLocation SUGAR_WATER_FLUID_FLOWING = new ResourceLocation(BumblezoneCommon.MODID, "block/sugar_water_flow");
+    public static final ResourceLocation HONEY_FLUID_STILL = new ResourceLocation(BumblezoneCommon.MODID, "block/honey_fluid_still");
+    public static final ResourceLocation HONEY_FLUID_FLOWING = new ResourceLocation(BumblezoneCommon.MODID, "block/honey_fluid_flow");
+    public static final ResourceLocation ROYAL_JELLY_FLUID_STILL = new ResourceLocation(BumblezoneCommon.MODID, "block/royal_jelly_fluid_still");
+    public static final ResourceLocation ROYAL_JELLY_FLOWING = new ResourceLocation(BumblezoneCommon.MODID, "block/royal_jelly_fluid_flow");
 
     @Override
     public void onInitializeClient(ModContainer mod) {
-        DimensionSpecialEffectsAccessor.thebumblezone_getBY_IDENTIFIER().put(new ResourceLocation(Bumblezone.MODID, "sky_property"), new BzSkyProperty());
+        DimensionSpecialEffectsAccessor.thebumblezone_getBY_IDENTIFIER().put(new ResourceLocation(BumblezoneCommon.MODID, "sky_property"), new BzSkyProperty());
 
         IncenseCandleColoring.registerBlockColors();
         IncenseCandleColoring.registerItemColors();

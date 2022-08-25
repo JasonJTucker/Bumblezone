@@ -21,8 +21,8 @@ import net.minecraftforge.registries.RegistryObject;
 import java.util.List;
 
 public class ProductiveBeesCompatRegs {
-    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, Bumblezone.MODID);
-    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, Bumblezone.MODID);
+    public static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, BumblezoneCommon.MODID);
+    public static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, BumblezoneCommon.MODID);
 
     public static final RegistryObject<ConfiguredFeature<?, ?>> PB_CONFIGURABLE_COMB_CF = CONFIGURED_FEATURES.register("productivebees_be_comb_configured_feature", () ->
         new ConfiguredFeature<>(BzFeatures.BLOCKENTITY_COMBS_FEATURE.get(),

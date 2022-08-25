@@ -1,6 +1,5 @@
 package com.telepathicgrunt.the_bumblezone.modcompat;
 
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.items.recipes.IncenseCandleRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Registry;
@@ -85,8 +84,8 @@ public class FakeIncenseCandleRecipeCreator {
         fakedShapedIngredients.addAll(fakedShapedIngredientsMutable);
 
         return new ShapedRecipe(
-                new ResourceLocation(Bumblezone.MODID, recipe.getId().getPath() + "_" + currentRecipe),
-                Bumblezone.MODID,
+                new ResourceLocation(BumblezoneCommon.MODID, recipe.getId().getPath() + "_" + currentRecipe),
+                BumblezoneCommon.MODID,
                 3,
                 3,
                 fakedShapedIngredients,

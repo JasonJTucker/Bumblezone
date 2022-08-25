@@ -2,7 +2,6 @@ package com.telepathicgrunt.the_bumblezone.client.rendering.beehemoth;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.mobs.BeehemothEntity;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -21,7 +20,7 @@ import net.minecraft.util.Mth;
 
 public class BeehemothModel extends EntityModel<BeehemothEntity> {
     // This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Bumblezone.MODID, "beehemoth"), "main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(BumblezoneCommon.MODID, "beehemoth"), "main");
     private final ModelPart ROOT;
     protected final ModelPart SADDLE;
     protected final ModelPart CROWN;

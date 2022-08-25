@@ -7,7 +7,7 @@ import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 
 public class StinglessBeeHelmetSightPacket {
 
-    public static ResourceLocation PACKET_ID = new ResourceLocation(Bumblezone.MODID, "stingless_bee_helmet_sight_packet");
+    public static ResourceLocation PACKET_ID = new ResourceLocation(BumblezoneCommon.MODID, "stingless_bee_helmet_sight_packet");
 
     public static void registerPacket() {
         ServerPlayNetworking.registerGlobalReceiver(PACKET_ID,

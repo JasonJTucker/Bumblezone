@@ -86,8 +86,8 @@ public class FakeIncenseCandleRecipeCreator {
         fakedShapedIngredients.addAll(fakedShapedIngredientsMutable);
 
         return new ShapedRecipe(
-                new ResourceLocation(Bumblezone.MODID, recipe.getId().getPath() + "_" + currentRecipe),
-                Bumblezone.MODID,
+                new ResourceLocation(BumblezoneCommon.MODID, recipe.getId().getPath() + "_" + currentRecipe),
+                BumblezoneCommon.MODID,
                 3,
                 3,
                 fakedShapedIngredients,

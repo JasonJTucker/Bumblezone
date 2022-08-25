@@ -12,6 +12,6 @@ import net.fabricmc.api.Environment;
 public class ModMenuConfig implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return parent -> MidnightConfig.getScreen(parent, Bumblezone.MODID);
+        return parent -> MidnightConfig.getScreen(parent, BumblezoneCommon.MODID);
     }
 }

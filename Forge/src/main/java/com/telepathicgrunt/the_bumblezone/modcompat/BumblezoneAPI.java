@@ -1,6 +1,5 @@
 package com.telepathicgrunt.the_bumblezone.modcompat;
 
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.EntityTeleportationHookup;
 import com.telepathicgrunt.the_bumblezone.items.EssenceOfTheBees;
 import com.telepathicgrunt.the_bumblezone.modinit.BzCriterias;
@@ -26,7 +25,7 @@ public class BumblezoneAPI {
     /**
      * ID of the dimension for Bumblezone
      */
-    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(Bumblezone.MODID, Bumblezone.MODID);
+    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(BumblezoneCommon.MODID, BumblezoneCommon.MODID);
 
     // Requiem mod uses this method
     /**

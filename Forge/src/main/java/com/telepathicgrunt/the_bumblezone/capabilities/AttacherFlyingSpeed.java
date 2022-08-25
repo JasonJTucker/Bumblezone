@@ -19,7 +19,7 @@ public final class AttacherFlyingSpeed {
     // Their instances will hold a lazy that holds the cap.
     private static class FSCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-        public static final ResourceLocation IDENTIFIER = new ResourceLocation(Bumblezone.MODID, "original_flying_speed");
+        public static final ResourceLocation IDENTIFIER = new ResourceLocation(BumblezoneCommon.MODID, "original_flying_speed");
         private final EntityFlyingSpeed backend = new EntityFlyingSpeed();
         private final LazyOptional<EntityFlyingSpeed> optionalData = LazyOptional.of(() -> backend);
 

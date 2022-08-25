@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.village.poi.PoiType;
 
 public class BzPOI {
 
-    public static final PoiType BROOD_BLOCK_POI = PointOfInterestHelper.register(new ResourceLocation(Bumblezone.MODID, "brood_block_poi"), 0, 1, ImmutableSet.copyOf(BzBlocks.HONEYCOMB_BROOD.getStateDefinition().getPossibleStates()));
+    public static final PoiType BROOD_BLOCK_POI = PointOfInterestHelper.register(new ResourceLocation(BumblezoneCommon.MODID, "brood_block_poi"), 0, 1, ImmutableSet.copyOf(BzBlocks.HONEYCOMB_BROOD.getStateDefinition().getPossibleStates()));
 
     public static void registerPOIs() {
         // PointOfInterestHelper.register registers the poi for me. Dumb but ok. Highly unusual compared to all the other helpers...

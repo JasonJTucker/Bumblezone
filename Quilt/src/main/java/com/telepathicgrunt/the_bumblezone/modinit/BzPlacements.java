@@ -17,9 +17,9 @@ public class BzPlacements {
     public static PlacementModifierType<?> RANDOM_3D_CLUSTER_PLACEMENT;
 
     public static void registerPlacements() {
-        HONEYCOMB_HOLE_PLACER = register(new ResourceLocation(Bumblezone.MODID, "honeycomb_hole_placer"), HoneycombHolePlacer.CODEC);
-        RANDOM_3D_UNDERGROUND_CHUNK_PLACEMENT = register(new ResourceLocation(Bumblezone.MODID, "random_3d_underground_chunk_placement"), Random3DUndergroundChunkPlacement.CODEC);
-        RANDOM_3D_CLUSTER_PLACEMENT = register(new ResourceLocation(Bumblezone.MODID, "random_3d_cluster_placement"), Random3DClusterPlacement.CODEC);
+        HONEYCOMB_HOLE_PLACER = register(new ResourceLocation(BumblezoneCommon.MODID, "honeycomb_hole_placer"), HoneycombHolePlacer.CODEC);
+        RANDOM_3D_UNDERGROUND_CHUNK_PLACEMENT = register(new ResourceLocation(BumblezoneCommon.MODID, "random_3d_underground_chunk_placement"), Random3DUndergroundChunkPlacement.CODEC);
+        RANDOM_3D_CLUSTER_PLACEMENT = register(new ResourceLocation(BumblezoneCommon.MODID, "random_3d_cluster_placement"), Random3DClusterPlacement.CODEC);
     }
 
     private static <P extends PlacementModifier> PlacementModifierType<P> register(ResourceLocation resourceLocation, Codec<P> codec) {

@@ -3,7 +3,6 @@ package com.telepathicgrunt.the_bumblezone.client.rendering.stingerspear;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.nonliving.ThrownStingerSpearEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -14,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class StingerSpearRenderer extends EntityRenderer<ThrownStingerSpearEntity> {
-    public static final ResourceLocation STINGER_SPEAR_LOCATION = new ResourceLocation(Bumblezone.MODID, "textures/entity/stinger_spear.png");
+    public static final ResourceLocation STINGER_SPEAR_LOCATION = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/stinger_spear.png");
     private final StingerSpearModel model;
 
     public StingerSpearRenderer(EntityRendererProvider.Context context) {

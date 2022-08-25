@@ -1,6 +1,5 @@
 package com.telepathicgrunt.the_bumblezone.modcompat;
 
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.items.recipes.IncenseCandleRecipe;
 import com.telepathicgrunt.the_bumblezone.modinit.BzFluids;
 import com.telepathicgrunt.the_bumblezone.modinit.BzItems;
@@ -17,8 +16,6 @@ import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 
@@ -95,7 +92,7 @@ public class REICompat implements REIClientPlugin {
         addInfo(BzItems.SUPER_CANDLE_YELLOW.get());
         addInfo(BzItems.INCENSE_CANDLE.get());
 
-        registry.getRecipeManager().byKey(new ResourceLocation(Bumblezone.MODID, "incense_candle"))
+        registry.getRecipeManager().byKey(new ResourceLocation(BumblezoneCommon.MODID, "incense_candle"))
                 .ifPresent(recipe -> registerExtraRecipes(recipe, registry));
     }
 
@@ -104,7 +101,7 @@ public class REICompat implements REIClientPlugin {
                 EntryStacks.of(item),
                 Component.translatable(Registry.ITEM.getKey(item).toString()),
                 (text) -> {
-                    text.add(Component.translatable(Bumblezone.MODID + "." + Registry.ITEM.getKey(item).getPath() + ".jei_description"));
+                    text.add(Component.translatable(BumblezoneCommon.MODID + "." + Registry.ITEM.getKey(item).getPath() + ".jei_description"));
                     return text;
                 });
     }
@@ -114,7 +111,7 @@ public class REICompat implements REIClientPlugin {
                 EntryStacks.of(fluid, 1),
                 Component.translatable(Registry.FLUID.getKey(fluid).toString()),
                 (text) -> {
-                    text.add(Component.translatable(Bumblezone.MODID + "." + Registry.FLUID.getKey(fluid).getPath() + ".jei_description"));
+                    text.add(Component.translatable(BumblezoneCommon.MODID + "." + Registry.FLUID.getKey(fluid).getPath() + ".jei_description"));
                     return text;
                 });
     }

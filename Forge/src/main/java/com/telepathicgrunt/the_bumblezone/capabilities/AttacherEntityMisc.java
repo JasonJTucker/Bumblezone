@@ -19,7 +19,7 @@ public final class AttacherEntityMisc {
     // Their instances will hold a lazy that holds the cap.
     private static class FSCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-        public static final ResourceLocation IDENTIFIER = new ResourceLocation(Bumblezone.MODID, "entity_misc");
+        public static final ResourceLocation IDENTIFIER = new ResourceLocation(BumblezoneCommon.MODID, "entity_misc");
         private final EntityMisc backend = new EntityMisc();
         private final LazyOptional<EntityMisc> optionalData = LazyOptional.of(() -> backend);
 

@@ -10,7 +10,7 @@ public class MessageHandler {
     //setup channel to send packages through
     private static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel DEFAULT_CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(Bumblezone.MODID, "networking"),
+            new ResourceLocation(BumblezoneCommon.MODID, "networking"),
             () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals
     );
 

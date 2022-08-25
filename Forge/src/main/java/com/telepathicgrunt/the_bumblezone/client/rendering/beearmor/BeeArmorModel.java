@@ -2,7 +2,6 @@ package com.telepathicgrunt.the_bumblezone.client.rendering.beearmor;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.items.BeeArmor;
 import com.telepathicgrunt.the_bumblezone.items.BumbleBeeChestplate;
 import com.telepathicgrunt.the_bumblezone.items.HoneyBeeLeggings;
@@ -22,8 +21,8 @@ import net.minecraft.world.item.ItemStack;
 
 public class BeeArmorModel extends HumanoidModel<LivingEntity> {
 
-    public static final ModelLayerLocation VARIANT_1_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Bumblezone.MODID, "bee_armor"), "bee_armor");
-    public static final ModelLayerLocation VARIANT_2_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(Bumblezone.MODID, "bee_armor"), "bee_armor_2");
+    public static final ModelLayerLocation VARIANT_1_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(BumblezoneCommon.MODID, "bee_armor"), "bee_armor");
+    public static final ModelLayerLocation VARIANT_2_LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(BumblezoneCommon.MODID, "bee_armor"), "bee_armor_2");
     protected final EquipmentSlot slot;
     public LivingEntity entityLiving;
     public final ModelPart leftWing;

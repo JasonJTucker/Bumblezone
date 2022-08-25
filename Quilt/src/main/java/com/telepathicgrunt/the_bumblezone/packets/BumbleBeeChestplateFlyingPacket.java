@@ -9,7 +9,7 @@ import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 
 public class BumbleBeeChestplateFlyingPacket {
 
-    public static ResourceLocation PACKET_ID = new ResourceLocation(Bumblezone.MODID, "bumble_bee_chestplate_flying_packet");
+    public static ResourceLocation PACKET_ID = new ResourceLocation(BumblezoneCommon.MODID, "bumble_bee_chestplate_flying_packet");
 
     public static void registerPacket() {
         ServerPlayNetworking.registerGlobalReceiver(PACKET_ID,

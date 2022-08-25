@@ -7,7 +7,7 @@ import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 
 public class BeehemothControlsPacket {
 
-    public static ResourceLocation PACKET_ID = new ResourceLocation(Bumblezone.MODID, "beehemoth_controls_packet");
+    public static ResourceLocation PACKET_ID = new ResourceLocation(BumblezoneCommon.MODID, "beehemoth_controls_packet");
 
     public static void registerPacket() {
         ServerPlayNetworking.registerGlobalReceiver(PACKET_ID,

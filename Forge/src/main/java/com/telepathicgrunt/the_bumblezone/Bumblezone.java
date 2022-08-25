@@ -21,13 +21,16 @@ import com.telepathicgrunt.the_bumblezone.entities.WanderingTrades;
 import com.telepathicgrunt.the_bumblezone.entities.mobs.BeeQueenEntity;
 import com.telepathicgrunt.the_bumblezone.entities.pollenpuffentityflowers.PollenPuffEntityPollinateManager;
 import com.telepathicgrunt.the_bumblezone.entities.queentrades.QueensTradeManager;
+import com.telepathicgrunt.the_bumblezone.events.Advancements;
 import com.telepathicgrunt.the_bumblezone.items.BeeStinger;
 import com.telepathicgrunt.the_bumblezone.items.dispenserbehavior.DispenserItemSetup;
 import com.telepathicgrunt.the_bumblezone.modcompat.ModChecker;
 import com.telepathicgrunt.the_bumblezone.modcompat.ModdedBeesBeesSpawning;
 import com.telepathicgrunt.the_bumblezone.modcompat.ProductiveBeesCompatRegs;
 import com.telepathicgrunt.the_bumblezone.modinit.*;
+import com.telepathicgrunt.the_bumblezone.modinit.BzPOI;
 import com.telepathicgrunt.the_bumblezone.packets.MessageHandler;
+import com.telepathicgrunt.the_bumblezone.registration.*;
 import com.telepathicgrunt.the_bumblezone.utils.ThreadExecutor;
 import com.telepathicgrunt.the_bumblezone.world.dimension.BzWorldSavedData;
 import com.telepathicgrunt.the_bumblezone.world.surfacerules.PollinatedSurfaceSource;
@@ -51,15 +54,14 @@ import net.minecraftforge.fml.loading.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mod(Bumblezone.MODID)
+@Mod(BumblezoneCommon.MODID)
 public class Bumblezone{
 
     public static final String MODID = "assets/the_bumblezone";
-    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(Bumblezone.MODID, Bumblezone.MODID);
+    public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(BumblezoneCommon.MODID, BumblezoneCommon.MODID);
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     public Bumblezone() {
-        BzTags.initTags();
         BzBiomeHeightRegistry.initBiomeHeightRegistry();
 
         //Events
@@ -84,7 +86,7 @@ public class Bumblezone{
         forgeBus.addListener(EntityMisc::onEntityKilled);
         forgeBus.addListener(EntityMisc::onHoneyBottleDrank);
         forgeBus.addListener(EntityMisc::onHoneySlimeBred);
-        forgeBus.addListener(TargetAdvancementDoneTrigger::OnAdvancementGiven);
+        forgeBus.addListener(Advancements::OnAdvancementGiven);
         forgeBus.addListener(QueensTradeManager.QUEENS_TRADE_MANAGER::resolveQueenTrades);
         forgeBus.addListener(ThreadExecutor::handleServerAboutToStartEvent);
         forgeBus.addListener(ThreadExecutor::handleServerStoppingEvent);
@@ -95,31 +97,10 @@ public class Bumblezone{
         modEventBus.addListener(EventPriority.LOWEST, this::modCompatSetup); //run after all mods
         forgeBus.addListener(this::registerDatapackListener);
         modEventBus.addListener(EventPriority.NORMAL, BzEntities::registerEntityAttributes);
-        BzItems.ITEMS.register(modEventBus);
-        BzBlocks.BLOCKS.register(modEventBus);
         BzFluids.FLUIDS.register(modEventBus);
         BzPOI.POI_TYPES.register(modEventBus);
-        BzRecipes.RECIPES.register(modEventBus);
-        BzEffects.EFFECTS.register(modEventBus);
-        BzMenuTypes.MENUS.register(modEventBus);
-        BzStats.CUSTOM_STAT.register(modEventBus);
-        BzFeatures.FEATURES.register(modEventBus);
-        BzEntities.ENTITIES.register(modEventBus);
         BzFluids.FLUID_TYPES.register(modEventBus);
-        BzSounds.SOUND_EVENTS.register(modEventBus);
-        BzStructures.STRUCTURES.register(modEventBus);
-        BzDimension.BIOME_SOURCE.register(modEventBus);
-        BzParticles.PARTICLE_TYPES.register(modEventBus);
-        BzPredicates.POS_RULE_TEST.register(modEventBus);
-        BzDimension.CHUNK_GENERATOR.register(modEventBus);
-        BzEnchantments.ENCHANTMENTS.register(modEventBus);
-        BzSurfaceRules.SURFACE_RULES.register(modEventBus);
-        BzDimension.DENSITY_FUNCTIONS.register(modEventBus);
-        BzBlockEntities.BLOCK_ENTITIES.register(modEventBus);
-        BzPlacements.PLACEMENT_MODIFIER.register(modEventBus);
-        BzProcessors.STRUCTURE_PROCESSOR.register(modEventBus);
         BzBiomeModifiers.BIOME_MODIFIER_SERIALIZERS.register(modEventBus);
-        BzLootFunctionTypes.LOOT_ITEM_FUNCTION_TYPE.register(modEventBus);
 
         if (ModList.get().isLoaded("productivebees")) {
             ProductiveBeesCompatRegs.CONFIGURED_FEATURES.register(modEventBus);
@@ -139,6 +120,8 @@ public class Bumblezone{
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzDimensionConfigs.GENERAL_SPEC, "assets/the_bumblezone/dimension.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzBeeAggressionConfigs.GENERAL_SPEC, "assets/the_bumblezone/bee_aggression.toml");
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzModCompatibilityConfigs.GENERAL_SPEC, "assets/the_bumblezone/mod_compatibility.toml");
+
+        BumblezoneCommon.init();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

@@ -14,8 +14,8 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 public class BeehemothControls {
 
-    public static final KeyMapping KEY_BIND_BEEHEMOTH_DOWN = createSafeKeyMapping("key." + Bumblezone.MODID + ".beehemoth_down", GLFW.GLFW_KEY_CAPS_LOCK);
-    public static final KeyMapping KEY_BIND_BEEHEMOTH_UP = createSafeKeyMapping("key." + Bumblezone.MODID + ".beehemoth_up", GLFW.GLFW_KEY_SPACE);
+    public static final KeyMapping KEY_BIND_BEEHEMOTH_DOWN = createSafeKeyMapping("key." + BumblezoneCommon.MODID + ".beehemoth_down", GLFW.GLFW_KEY_CAPS_LOCK);
+    public static final KeyMapping KEY_BIND_BEEHEMOTH_UP = createSafeKeyMapping("key." + BumblezoneCommon.MODID + ".beehemoth_up", GLFW.GLFW_KEY_SPACE);
 
     public static void keyInput(int key, int scancode, int action) {
         if (Minecraft.getInstance().player != null &&
@@ -43,7 +43,7 @@ public class BeehemothControls {
     private static KeyMapping createSafeKeyMapping(String description, int keycode) {
         InputConstants.Key key = InputConstants.Type.KEYSYM.getOrCreate(keycode);
         KeyMapping oldMapping = KeyMappingAccessor.getMAP().get(key);
-        KeyMapping keyMapping = new KeyMapping(description, keycode, "key.categories." + Bumblezone.MODID);
+        KeyMapping keyMapping = new KeyMapping(description, keycode, "key.categories." + BumblezoneCommon.MODID);
         KeyMappingAccessor.getMAP().put(key, oldMapping);
         KeyMappingAccessor.getALL().remove(description);
         return keyMapping;

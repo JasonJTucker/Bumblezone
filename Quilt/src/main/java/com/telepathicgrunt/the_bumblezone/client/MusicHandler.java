@@ -15,7 +15,7 @@ import net.minecraft.world.entity.player.Player;
 public class MusicHandler {
 
     private static SoundInstance ANGRY_BEE_MUSIC = null;
-    private static final ResourceLocation BIOME_MUSIC = new ResourceLocation(Bumblezone.MODID, "biome_music");
+    private static final ResourceLocation BIOME_MUSIC = new ResourceLocation(BumblezoneCommon.MODID, "biome_music");
 
     public static void playAngryBeeMusic(Player entity) {
         Minecraft minecraftClient = Minecraft.getInstance();

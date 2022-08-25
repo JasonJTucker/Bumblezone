@@ -28,7 +28,7 @@ public class EMICompat implements EmiPlugin {
 
     @Override
     public void register(EmiRegistry registry) {
-        registry.getRecipeManager().byKey(new ResourceLocation(Bumblezone.MODID, "incense_candle"))
+        registry.getRecipeManager().byKey(new ResourceLocation(BumblezoneCommon.MODID, "incense_candle"))
                 .ifPresent(recipe -> registerExtraRecipes(recipe, registry));
     }
 

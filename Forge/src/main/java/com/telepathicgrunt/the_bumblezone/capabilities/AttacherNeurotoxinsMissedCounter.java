@@ -19,7 +19,7 @@ public final class AttacherNeurotoxinsMissedCounter {
     // Their instances will hold a lazy that holds the cap.
     private static class FSCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-        public static final ResourceLocation IDENTIFIER = new ResourceLocation(Bumblezone.MODID, "neurotoxins_missed_counter");
+        public static final ResourceLocation IDENTIFIER = new ResourceLocation(BumblezoneCommon.MODID, "neurotoxins_missed_counter");
         private final NeurotoxinsMissCounter backend = new NeurotoxinsMissCounter();
         private final LazyOptional<NeurotoxinsMissCounter> optionalData = LazyOptional.of(() -> backend);
 

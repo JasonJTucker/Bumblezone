@@ -33,7 +33,7 @@ import java.util.Set;
 
 
 public class BzWorldSavedData extends SavedData {
-	private static final String TELEPORTATION_DATA = Bumblezone.MODID + "teleportation";
+	private static final String TELEPORTATION_DATA = BumblezoneCommon.MODID + "teleportation";
 	private static final BzWorldSavedData CLIENT_DUMMY = new BzWorldSavedData(null);
 	private static final List<QueuedEntityData> QUEUED_ENTITIES_TO_TELEPORT = new ArrayList<>();
 

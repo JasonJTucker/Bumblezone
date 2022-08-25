@@ -30,7 +30,7 @@ import java.util.Optional;
 public class JEIIntegration implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation(Bumblezone.MODID, "jei_plugin");
+        return new ResourceLocation(BumblezoneCommon.MODID, "jei_plugin");
     }
 
     @Override
@@ -106,7 +106,7 @@ public class JEIIntegration implements IModPlugin {
         ClientLevel level = Minecraft.getInstance().level;
         if (level == null)
             return;
-        level.getRecipeManager().byKey(new ResourceLocation(Bumblezone.MODID, "incense_candle"))
+        level.getRecipeManager().byKey(new ResourceLocation(BumblezoneCommon.MODID, "incense_candle"))
                 .ifPresent(recipe -> registerExtraRecipes(recipe, registration));
     }
 
@@ -114,14 +114,14 @@ public class JEIIntegration implements IModPlugin {
         registration.addIngredientInfo(
                 new ItemStack(item),
                 VanillaTypes.ITEM_STACK,
-                Component.translatable(Bumblezone.MODID + "." + Registry.ITEM.getKey(item).getPath() + ".jei_description"));
+                Component.translatable(BumblezoneCommon.MODID + "." + Registry.ITEM.getKey(item).getPath() + ".jei_description"));
     }
 
     private static void addInfo(IRecipeRegistration registration, Fluid fluid) {
         registration.addIngredientInfo(
                 new FluidStack(fluid, 1),
                 FabricTypes.FLUID_STACK,
-                Component.translatable(Bumblezone.MODID + "." + Registry.FLUID.getKey(fluid).getPath() + ".jei_description"));
+                Component.translatable(BumblezoneCommon.MODID + "." + Registry.FLUID.getKey(fluid).getPath() + ".jei_description"));
     }
 
     private static void registerExtraRecipes(Recipe<?> baseRecipe, IRecipeRegistration registration) {

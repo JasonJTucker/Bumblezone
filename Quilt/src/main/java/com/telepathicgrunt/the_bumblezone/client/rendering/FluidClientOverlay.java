@@ -26,8 +26,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
 
 public class FluidClientOverlay {
-    private static final ResourceLocation TEXTURE_UNDERWATER = new ResourceLocation(Bumblezone.MODID, "textures/misc/sugar_water_underwater.png");
-    private static final ResourceLocation HONEY_TEXTURE_UNDERWATER = new ResourceLocation(Bumblezone.MODID + ":textures/misc/honey_fluid_underwater.png");
+    private static final ResourceLocation TEXTURE_UNDERWATER = new ResourceLocation(BumblezoneCommon.MODID, "textures/misc/sugar_water_underwater.png");
+    private static final ResourceLocation HONEY_TEXTURE_UNDERWATER = new ResourceLocation(BumblezoneCommon.MODID + ":textures/misc/honey_fluid_underwater.png");
 
     public static boolean sugarWaterFluidOverlay(Player player, PoseStack matrixStack) {
         if(!(player instanceof LocalPlayer clientPlayerEntity)) return false;

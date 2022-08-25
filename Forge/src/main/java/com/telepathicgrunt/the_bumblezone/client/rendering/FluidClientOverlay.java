@@ -18,8 +18,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class FluidClientOverlay {
-    private static final ResourceLocation HONEY_TEXTURE_UNDERWATER = new ResourceLocation(Bumblezone.MODID + ":textures/misc/honey_fluid_underwater.png");
-    private static final ResourceLocation ROYAL_JELLY_TEXTURE_UNDERWATER = new ResourceLocation(Bumblezone.MODID + ":textures/misc/royal_jelly_fluid_underwater.png");
+    private static final ResourceLocation HONEY_TEXTURE_UNDERWATER = new ResourceLocation(BumblezoneCommon.MODID + ":textures/misc/honey_fluid_underwater.png");
+    private static final ResourceLocation ROYAL_JELLY_TEXTURE_UNDERWATER = new ResourceLocation(BumblezoneCommon.MODID + ":textures/misc/royal_jelly_fluid_underwater.png");
 
     public static boolean renderHoneyOverlay(LocalPlayer clientPlayerEntity, PoseStack matrixStack) {
         if(!clientPlayerEntity.isEyeInFluidType(BzFluids.HONEY_FLUID_TYPE.get()) &&

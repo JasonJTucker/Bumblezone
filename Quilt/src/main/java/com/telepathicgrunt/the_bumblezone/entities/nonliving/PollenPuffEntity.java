@@ -244,7 +244,7 @@ public class PollenPuffEntity extends ThrowableItemProjectile {
                 }
 
                 this.level.setBlock(newPos, blockstate, 3);
-                FakeServerPlayer fakePlayer = new FakePlayerBuilder(new ResourceLocation(Bumblezone.MODID, "default_fake_player"))
+                FakeServerPlayer fakePlayer = new FakePlayerBuilder(new ResourceLocation(BumblezoneCommon.MODID, "default_fake_player"))
                         .create(this.level.getServer(), (ServerLevel) this.level, "placer");
                 blockstate.getBlock().setPlacedBy(this.level, newPos, blockstate, fakePlayer, ItemStack.EMPTY);
 

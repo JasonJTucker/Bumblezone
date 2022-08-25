@@ -16,7 +16,7 @@ import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 public class MobEffectClientSyncPacket {
 
-    public static ResourceLocation PACKET_ID = new ResourceLocation(Bumblezone.MODID, "mob_effect_sync_packet");
+    public static ResourceLocation PACKET_ID = new ResourceLocation(BumblezoneCommon.MODID, "mob_effect_sync_packet");
     private static final int FLAG_AMBIENT = 1;
     private static final int FLAG_VISIBLE = 2;
     private static final int FLAG_SHOW_ICON = 4;

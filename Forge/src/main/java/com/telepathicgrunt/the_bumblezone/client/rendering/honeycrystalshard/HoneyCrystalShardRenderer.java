@@ -3,7 +3,6 @@ package com.telepathicgrunt.the_bumblezone.client.rendering.honeycrystalshard;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Vector3f;
-import com.telepathicgrunt.the_bumblezone.Bumblezone;
 import com.telepathicgrunt.the_bumblezone.entities.nonliving.HoneyCrystalShardEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -14,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class HoneyCrystalShardRenderer extends EntityRenderer<HoneyCrystalShardEntity> {
-    public static final ResourceLocation HONEY_CRYSTAL_SHARD_LOCATION = new ResourceLocation(Bumblezone.MODID, "textures/entity/honey_crystal_shard.png");
+    public static final ResourceLocation HONEY_CRYSTAL_SHARD_LOCATION = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/honey_crystal_shard.png");
     private final HoneyCrystalShardModel model;
 
     public HoneyCrystalShardRenderer(EntityRendererProvider.Context context) {

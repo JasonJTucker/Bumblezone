@@ -9,8 +9,8 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BeeQueenRenderer extends MobRenderer<BeeQueenEntity, BeeQueenModel> {
-    private static final ResourceLocation SKIN = new ResourceLocation(Bumblezone.MODID, "textures/entity/bee_queen.png");
-    private static final ResourceLocation ANGRY_SKIN = new ResourceLocation(Bumblezone.MODID, "textures/entity/bee_queen_angry.png");
+    private static final ResourceLocation SKIN = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/bee_queen.png");
+    private static final ResourceLocation ANGRY_SKIN = new ResourceLocation(BumblezoneCommon.MODID, "textures/entity/bee_queen_angry.png");
 
     public BeeQueenRenderer(EntityRendererProvider.Context context) {
         super(context, new BeeQueenModel(context.bakeLayer(BeeQueenModel.LAYER_LOCATION)), 1.2F);

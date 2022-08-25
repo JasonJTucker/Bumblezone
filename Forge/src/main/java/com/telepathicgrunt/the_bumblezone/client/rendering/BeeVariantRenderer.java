@@ -61,7 +61,7 @@ public class BeeVariantRenderer extends BeeRenderer {
                     type = "_nectar";
 
                 String path = String.format("textures/entity/bee_variants/%s/bee%s.png", name, type);
-                return new ResourceLocation(Bumblezone.MODID, path);
+                return new ResourceLocation(BumblezoneCommon.MODID, path);
             }
         }
 

@@ -21,10 +21,10 @@ public class BzEffects {
     public static final MobEffect PARALYZED = new ParalyzedEffect(MobEffectCategory.HARMFUL, 15662848);
 
     public static void registerEffects() {
-        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(Bumblezone.MODID, "wrath_of_the_hive"), WRATH_OF_THE_HIVE);
-        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(Bumblezone.MODID, "protection_of_the_hive"), PROTECTION_OF_THE_HIVE);
-        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(Bumblezone.MODID, "beenergized"), BEENERGIZED);
-        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(Bumblezone.MODID, "hidden"), HIDDEN);
-        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(Bumblezone.MODID, "paralyzed"), PARALYZED);
+        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(BumblezoneCommon.MODID, "wrath_of_the_hive"), WRATH_OF_THE_HIVE);
+        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(BumblezoneCommon.MODID, "protection_of_the_hive"), PROTECTION_OF_THE_HIVE);
+        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(BumblezoneCommon.MODID, "beenergized"), BEENERGIZED);
+        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(BumblezoneCommon.MODID, "hidden"), HIDDEN);
+        Registry.register(Registry.MOB_EFFECT, new ResourceLocation(BumblezoneCommon.MODID, "paralyzed"), PARALYZED);
     }
 }
