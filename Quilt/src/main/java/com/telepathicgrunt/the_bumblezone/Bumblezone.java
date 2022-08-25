@@ -41,7 +41,7 @@ import org.quiltmc.qsl.resource.loader.api.ResourceLoaderEvents;
 
 public class Bumblezone implements ModInitializer, EntityComponentInitializer {
 
-    public static final String MODID = "the_bumblezone";
+    public static final String MODID = "assets/the_bumblezone";
     public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(Bumblezone.MODID, Bumblezone.MODID);
 
     public static final Logger LOGGER = LogManager.getLogger(MODID);

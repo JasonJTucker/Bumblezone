@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:glass_pane",
+    {
+      "id": "#forge:stained_glass_pane",
+      "required": false
+    },
+    {
+      "id": "#c:glass_pane",
+      "required": false
+    }
+  ]
+}

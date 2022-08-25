@@ -54,7 +54,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(Bumblezone.MODID)
 public class Bumblezone{
 
-    public static final String MODID = "the_bumblezone";
+    public static final String MODID = "assets/the_bumblezone";
     public static final ResourceLocation MOD_DIMENSION_ID = new ResourceLocation(Bumblezone.MODID, Bumblezone.MODID);
     public static final Logger LOGGER = LogManager.getLogger(MODID);
 
@@ -132,13 +132,13 @@ public class Bumblezone{
         }
 
         // generates/handles config
-        FileUtils.getOrCreateDirectory(FMLPaths.CONFIGDIR.get().resolve("the_bumblezone"), "the_bumblezone");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, BzClientConfigs.GENERAL_SPEC, "the_bumblezone/client.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzGeneralConfigs.GENERAL_SPEC, "the_bumblezone/general.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzWorldgenConfigs.GENERAL_SPEC, "the_bumblezone/worldgen.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzDimensionConfigs.GENERAL_SPEC, "the_bumblezone/dimension.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzBeeAggressionConfigs.GENERAL_SPEC, "the_bumblezone/bee_aggression.toml");
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzModCompatibilityConfigs.GENERAL_SPEC, "the_bumblezone/mod_compatibility.toml");
+        FileUtils.getOrCreateDirectory(FMLPaths.CONFIGDIR.get().resolve("assets/the_bumblezone"), "assets/the_bumblezone");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, BzClientConfigs.GENERAL_SPEC, "assets/the_bumblezone/client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzGeneralConfigs.GENERAL_SPEC, "assets/the_bumblezone/general.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzWorldgenConfigs.GENERAL_SPEC, "assets/the_bumblezone/worldgen.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzDimensionConfigs.GENERAL_SPEC, "assets/the_bumblezone/dimension.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzBeeAggressionConfigs.GENERAL_SPEC, "assets/the_bumblezone/bee_aggression.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, BzModCompatibilityConfigs.GENERAL_SPEC, "assets/the_bumblezone/mod_compatibility.toml");
     }
 
     private void setup(final FMLCommonSetupEvent event) {

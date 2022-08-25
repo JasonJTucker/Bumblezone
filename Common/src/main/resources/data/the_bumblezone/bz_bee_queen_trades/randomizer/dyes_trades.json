@@ -1,0 +1,17 @@
+{
+  "wants": [
+    {
+      "id": "#the_bumblezone:randomizer/dyes",
+      "required": false
+    }
+  ],
+  "possible_rewards": [
+    {
+      "id": "#the_bumblezone:randomizer/dyes",
+      "count": 1,
+      "xp_reward": 0,
+      "weight": 1,
+      "required": false
+    }
+  ]
+}
