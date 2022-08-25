@@ -1,0 +1,273 @@
+buildscript {
+	repositories {
+		maven { url "https://plugins.gradle.org/m2/" }
+	}
+}
+
+plugins {
+	id 'maven-publish'
+	id "net.darkhax.curseforgegradle" version "1.0.7"
+	id "com.modrinth.minotaur" version "2.+"
+}
+
+archivesBaseName = "${project.modid}_quilt"
+version = "${project.mod_version_quilt}+${project.mc_version}"
+group = project.maven_group
+
+loom {
+	accessWidenerPath = file("src/main/resources/the_bumblezone.accesswidener")
+}
+
+configurations.all {
+	resolutionStrategy.dependencySubstitution {
+		substitute module('net.fabricmc:fabric-loader') using module(libs.quilt.loader.get().toString())
+		all { DependencySubstitution dependency ->
+			if (dependency.requested instanceof ModuleComponentSelector && dependency.requested.group == 'net.fabricmc.fabric-api') {
+				if (dependency.requested.module == 'fabric-api')
+					dependency.useTarget libs.quilted.fabric.api.get().toString()
+				else
+					dependency.useTarget 'org.quiltmc.quilted-fabric-api' + ':' + dependency.requested.module + ':' + quilted.fabric.api.get()
+			}
+		}
+	}
+}
+
+repositories {
+	maven { url "https://api.modrinth.com/maven/" }
+	maven { url "https://www.cursemaven.com" }
+	maven { url "https://maven.shedaniel.me/" }
+	maven {
+		name = "Ladysnake Libs"
+		url = "https://ladysnake.jfrog.io/artifactory/mods"
+	}
+	maven {
+		url "https://nexus.resourcefulbees.com/repository/telepathicgrunt/"
+	}
+	maven {
+		url = 'https://maven.cafeteria.dev'
+		content {
+			includeGroup 'dev.cafeteria'
+		}
+	}
+	repositories {
+		maven { url "https://maven.shedaniel.me" }
+	}
+	maven {
+		// location of the maven that hosts JEI files
+		name = "Progwml6 maven"
+		url = "https://dvs1.progwml6.com/files/maven/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
+	maven {
+		name = "TerraformersMC"
+		url = "https://maven.terraformersmc.com/"
+	}
+	maven {
+		url 'https://jitpack.io'
+	}
+}
+
+dependencies {
+	minecraft project.mc_version
+	mappings( loom.layered {
+		addLayer quiltMappings.mappings("org.quiltmc:quilt-mappings:${project.quilt_mappings}:v2")
+		officialMojangMappings()
+	})
+	modImplementation project.quilt_loader
+	modImplementation project.quilted_fabric_api
+	implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+	implementation project(":Common")
+
+	annotationProcessor"com.github.LlamaLad7:MixinExtras:${project.mixinextra}"
+	modImplementation "com.github.LlamaLad7:MixinExtras:${project.mixinextra}"
+	include "com.github.LlamaLad7:MixinExtras:${project.mixinextra}"
+
+	modImplementation "maven.modrinth:midnightlib:${project.midnightlib}"
+	include "maven.modrinth:midnightlib:${project.midnightlib}"
+
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal}"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal}"
+	include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal}"
+	include "dev.onyxstudios.cardinal-components-api:cardinal-components-entity:${project.cardinal}"
+
+	modImplementation "dev.cafeteria:fake-player-api:${project.fake_player}"
+	include "dev.cafeteria:fake-player-api:${project.fake_player}"
+
+	modCompileOnly "maven.modrinth:modmenu:${project.mod_menu}"
+	modRuntimeOnly "maven.modrinth:modmenu:${project.mod_menu}"
+
+	modCompileOnly "dev.emi:emi:${project.emi}"
+
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:${project.rei_fabric}"
+	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:${project.rei_fabric}"
+	/*
+	modRuntimeOnly ("me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_fabric}") {
+		exclude(group: "net.fabricmc.fabric-api")
+		exclude(group: "net.fabricmc", module: "fabric-loader")
+	}
+	modRuntimeOnly ("dev.architectury:architectury-fabric:${project.architectury_fabric}") {
+		exclude(group: "net.fabricmc.fabric-api")
+		exclude(group: "net.fabricmc", module: "fabric-loader")
+	}
+	modRuntimeOnly ("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_fabric}") {
+		exclude(group: "net.fabricmc.fabric-api")
+		exclude(group: "net.fabricmc", module: "fabric-loader")
+	}
+	*/
+
+	modCompileOnlyApi "curse.maven:jei-238222:3944625"
+	//modCompileOnlyApi "mezz.jei:jei-${jeimc}-fabric:${project.jei_fabric}"
+	/*
+	modRuntimeOnly ("mezz.jei:jei-${jeimc}-fabric:${project.jei_fabric}") {
+		exclude(group: "net.fabricmc.fabric-api")
+		exclude(group: "net.fabricmc", module: "fabric-loader")
+	}
+	*/
+
+	//modCompileOnly "curse.maven:friends_and_foes-551364:3725313"
+	//modCompileOnly "curse.maven:bee_better-351600:3726160"
+	//modRuntimeOnly "curse.maven:architectury-419697:3717905"
+	//modRuntimeOnly "curse.maven:bee_better-351600:3726160"
+
+	modRuntimeOnly "com.telepathicgrunt:CommandStructures-Fabric:${project.commandstructures_fabric}"
+	modRuntimeOnly "com.telepathicgrunt:StructureVoidToggle-Fabric:${project.structurevoidtoggle_fabric}"
+
+	//modCompileOnly "curse.maven:friends_and_foes-551364:3827720"
+	//modCompileOnly "curse.maven:bee_better-351600:3726160"
+
+	//modRuntimeOnly "curse.maven:architectury-419697:3717905"
+	//modRuntimeOnly "curse.maven:requiem-265729:3639233"
+	//modImplementation ("curse.maven:mobcatcher-498389:3575752") { transitive = false }
+	//modCompileOnly ("curse.maven:charm-318872:3355096") { transitive = false }
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+	withSourcesJar()
+}
+
+processResources {
+    inputs.property "version", project.version
+
+    filesMatching("quilt.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.encoding = 'UTF-8'
+	it.options.release.set(17)
+}
+
+tasks.withType(JavaCompile) {
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${archivesBaseName}"}
+	}
+}
+
+task apiJar(type: Jar, dependsOn: classes) {
+    from(sourceSets.main.output)
+    include 'the_bumblezone/**'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact(remapJar) {
+                builtBy remapJar
+            }
+            artifact(sourcesJar) {
+                builtBy remapSourcesJar
+            }
+
+            pom {
+                name = 'TheBumblezone-Quilt'
+                description = 'An unBEElievable dimension full of bees that becomes REALLY angry if you take their honey!'
+                url = 'https://github.com/TelepathicGrunt/Bumblezone-Fabric'
+
+                scm {
+                    connection = 'git:https://github.com/TelepathicGrunt/Bumblezone-Fabric.git'
+                    developerConnection = 'git:https://github.com/TelepathicGrunt/Bumblezone-Fabric.git'
+                    url = 'https://github.com/TelepathicGrunt/Bumblezone-Fabric'
+                }
+
+                licenses {
+                    license {
+                        name = 'GNU Lesser General Public License v3.0'
+                        url = 'https://github.com/TelepathicGrunt/Bumblezone-Fabric/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'telepathic_grunt'
+                        name = 'TelepathicGrunt'
+                        email = 'asarnesespam@gmail.com'
+                    }
+                }
+            }
+
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("https://nexus.resourcefulbees.com/repository/telepathicgrunt/")
+            credentials {
+                username "$System.env.MAVEN_USER"
+                password "$System.env.MAVEN_PASS"
+            }
+        }
+    }
+}
+
+String changelogText = file("CHANGELOG.md").getText('UTF-8')
+
+task publishCurseForgeQuilt(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+	apiToken = "$System.env.CURSEFORGEKEY"
+	int projectId = 363949
+
+	def mainFile = upload(projectId, remapJar)
+	mainFile.changelog = changelogText
+	mainFile.changelogType = "markdown"
+	mainFile.releaseType = "release"
+	mainFile.displayName = "The Bumblezone v${project.mod_version_quilt} (${project.mc_version} MC Quilt)"
+	mainFile.addGameVersion("1.19.1")
+	mainFile.addGameVersion("1.19.2")
+	mainFile.addModLoader("Quilt")
+	mainFile.addRequirement("midnightlib")
+	mainFile.addRequirement("qsl")
+}
+
+modrinth {
+	token = System.getenv("MODRINTH")
+	versionName = "The Bumblezone"
+	versionNumber = project.version + "+quilt"
+	projectId = "eA8SXqWL"
+	uploadFile = remapJar
+	changelog = changelogText
+	versionType = "RELEASE"
+	gameVersions = ["1.19.1"]
+	gameVersions = ["1.19.2"]
+	loaders = ["quilt"]
+	dependencies {
+		required.project "qsl"
+		required.project "midnightlib"
+	}
+}
+
+task buildAndReleaseQuilt{}
+tasks.publish.mustRunAfter tasks.build
+tasks.publishCurseForgeQuilt.mustRunAfter tasks.publish
+tasks.modrinth.mustRunAfter tasks.publish
+tasks.publishCurseForgeQuilt.dependsOn("remapJar")
+tasks.buildAndReleaseQuilt.dependsOn(tasks.build, tasks.publish, tasks.publishCurseForgeQuilt, tasks.modrinth)

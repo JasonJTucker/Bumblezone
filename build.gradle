@@ -1,156 +1,64 @@
-buildscript {
+subprojects {
+    
+    apply plugin: 'java'
+    
+    java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+    java.withSourcesJar()
+    java.withJavadocJar()
+
+    jar {
+        from(rootProject.file("LICENSE")) {
+            rename { "${it}_${modid}" }
+        }
+        manifest {
+            attributes([
+                    "Specification-Title": "${modid}",
+                    "Specification-Vendor": "TelepathicGrunt",
+                    "Specification-Version": project.jar.archiveVersion,
+                    "Implementation-Title": project.name,
+                    "Implementation-Version": "${mod_version_forge}+${mc_version}",
+                    "Implementation-Vendor" :"TelepathicGrunt",
+                    "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                    'Timestamp': System.currentTimeMillis(),
+                    "MixinConfigs": "${modid}.mixins.json",
+                    'Built-On-Java': "${System.getProperty('java.vm.version')} (${System.getProperty('java.vm.vendor')})",
+                    'Build-On-Minecraft': "${mc_version}"
+            ])
+        }
+    }
+
+    sourcesJar {
+        from(rootProject.file("LICENSE")) {
+            rename { "${it}_${modid}" }
+        }
+    }
+
     repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        maven { url = 'https://maven.moddingx.org' }
+
         mavenCentral()
-        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-        classpath 'org.moddingx:ModGradle:3.0.2'
-        classpath 'org.spongepowered:mixingradle:0.7.+'
-        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
-        classpath group: 'gradle.plugin.com.modrinth.minotaur', name: 'Minotaur', version: '1.2.1'
-    }
-}
 
-plugins {
-    id "net.darkhax.curseforgegradle" version "1.0.7"
-}
-
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'maven-publish'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-apply plugin: 'org.moddingx.modgradle.mapping'
-
-version = "${mod_version}+${mc_version}"
-group = "com.telepathicgrunt"
-archivesBaseName = "${modid}_forge"
-
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-minecraft {
-    mappings channel: 'sugarcane', version: "${sugarcane_version}-${mc_version}"
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
-
-    runs {
-        client {
-            workingDirectory project.file('run')
-            arg "-mixin.config=" + project.getProperty('modid') + ".mixins.json"
-            mods { the_bumblezone { source sourceSets.main } }
+        maven {
+            name = 'Sponge / Mixin'
+            url = 'https://repo.spongepowered.org/repository/maven-public/'
         }
 
-        server {
-            workingDirectory project.file('run')
-            arg "-mixin.config=" + project.getProperty('modid') + ".mixins.json"
-            mods { the_bumblezone { source sourceSets.main } }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            args '--mod', "the_bumblezone", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            arg "-mixin.config=" + project.getProperty('modid') + ".mixins.json"
-            mods { the_bumblezone { source sourceSets.main } }
+        maven {
+            name = 'BlameJared Maven (CrT / Bookshelf)'
+            url = 'https://maven.blamejared.com'
         }
     }
-}
 
+    tasks.withType(JavaCompile).configureEach {
+    
+        it.options.encoding = 'UTF-8'
+        it.options.release = 17
+    }
 
-repositories {
-    maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
-    }
-    maven {
-        // location of a maven mirror for JEI files, as a fallback
-        name = "ModMaven"
-        url = "https://modmaven.dev"
-    }
-    maven {
-        // Carrier Bees
-        name = "Jared"
-        url = "https://maven.blamejared.com"
-    }
-    maven {
-        // Abnormal Core
-        url = "https://maven.jaackson.me"
-    }
-    maven {
-        // AMB, Potion of Bees, Productive Bees, Buzzier Bees, Pokecube AIO, and Charm Reforged
-        url "https://www.cursemaven.com"
-    }
-    maven {
-        url "https://nexus.resourcefulbees.com/repository/telepathicgrunt/"
-    }
-    maven {
-        url "https://maven.architectury.dev/"
-    }
-    maven {
-        url "https://maven.shedaniel.me"
+    // Disables Gradle's custom module metadata from being published to maven. The
+    // metadata includes mapped dependencies which are not reasonably consumable by
+    // other mod developers.
+    tasks.withType(GenerateModuleMetadata) {
+
+        enabled = false
     }
 }
-
-dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
-    runtimeOnly fg.deobf("com.telepathicgrunt:StructureVoidToggle-Forge:${project.structurevoidtoggle_version}")
-    runtimeOnly fg.deobf("com.telepathicgrunt:CommandStructures-Forge:${project.commandstructures_version}")
-    compileOnly fg.deobf("curse.maven:productive_bees-377897:${productivebees_file_id}")
-
-    implementation fg.deobf("mezz.jei:jei-${jei_mc_version}-forge:${jei_version}")
-    //runtimeOnly fg.deobf("curse.maven:jeed-532286:${jeed_version}")
-    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
-    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${project.rei_version}")
-    compileOnly fg.deobf("dev.architectury:architectury-forge:${project.architectury_version}")
-
-    // Switch to `implementation` when testing mod compat
-    //runtimeOnly fg.deobf("dev.architectury:architectury-forge:${project.architectury_version}")
-    //runtimeOnly fg.deobf("curse.maven:friends_and_foes-602059:3873779")
-    //runtimeOnly fg.deobf("curse.maven:earthmobsmod-333256:3871807")
-    //runtimeOnly fg.deobf("curse.maven:token_enchanter-444421:3559237")
-    //runtimeOnly fg.deobf("curse.maven:silent_lib-242998:3708359")
-
-    //compileOnly fg.deobf("curse.maven:pokecube_aio-285121:${pokecubeaio_file_id}")
-    //runtimeOnly fg.deobf("curse.maven:better_advancements-272515:3562206")
-}
-
-apply from: 'gradle/manifest.gradle'
-
-mixin { 
-    add sourceSets.main, "${modid}.refmap.json"
-}
-
-apply from: 'gradle/maven.gradle'
-apply from: 'gradle/modrinth.gradle'
-task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
-    apiToken = "$System.env.CURSEFORGEKEY"
-    int projectId = 362479
-    String changelogText = new File("CHANGELOG.md").getText('UTF-8')
-
-    def mainFile = upload(projectId, jar)
-    mainFile.changelog = changelogText
-    mainFile.addGameVersion("1.19.2")
-    mainFile.changelogType = "markdown"
-    mainFile.releaseType = "release"
-    mainFile.displayName = "The Bumblezone v${project.mod_version} (${project.mc_version} MC)"
-}
-
-task checkForRefmap() {
-    if (file("./build/libs/the_bumblezone_forge-${project.mod_version}+${project.mc_version}.jar").exists()) {
-        assert zipTree("./build/libs/the_bumblezone_forge-${project.mod_version}+${project.mc_version}.jar")
-                .matching { include "the_bumblezone.refmap.json" }.getSingleFile() != null
-    }
-}
-
-task buildAndRelease{}
-tasks.checkForRefmap.mustRunAfter tasks.build
-tasks.publish.mustRunAfter tasks.checkForRefmap
-tasks.publishCurseForge.mustRunAfter tasks.publish
-tasks.publishModrinth.mustRunAfter tasks.publish
-tasks.buildAndRelease.dependsOn(tasks.build, tasks.publish, tasks.publishCurseForge, tasks.publishModrinth)

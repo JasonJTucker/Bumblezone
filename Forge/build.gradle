@@ -1,0 +1,235 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://maven.parchmentmc.org' }
+        maven { url = 'https://maven.moddingx.org' }
+        mavenCentral()
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.parchmentmc:librarian:1.+'
+        classpath 'org.moddingx:ModGradle:3.0.2'
+        classpath 'org.spongepowered:mixingradle:0.7.+'
+        classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
+    }
+}
+
+plugins {
+    id "net.darkhax.curseforgegradle" version "1.0.7"
+    id "com.modrinth.minotaur" version "2.+"
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'org.moddingx.modgradle.mapping'
+
+version = "${project.mod_version_forge}+${project.mc_version}"
+group = "com.telepathicgrunt"
+archivesBaseName = "${project.modid}_forge"
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'sugarcane', version: "${project.sugarcane_version}-${project.mc_version}"
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            arg "-mixin.config=" + project.getProperty('modid') + ".mixins.json"
+            mods { 
+				the_bumblezone { 
+					source sourceSets.main
+                    source project(":Common").sourceSets.main
+				} 
+			}
+        }
+
+        server {
+            workingDirectory project.file('run')
+            arg "-mixin.config=" + project.getProperty('modid') + ".mixins.json"
+            mods { 
+				the_bumblezone { 
+					source sourceSets.main
+                    source project(":Common").sourceSets.main
+				} 
+			}
+        }
+    }
+}
+
+
+repositories {
+    maven {
+        // location of the maven that hosts JEI files
+        name = "Progwml6 maven"
+        url = "https://dvs1.progwml6.com/files/maven/"
+    }
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
+        // Carrier Bees
+        name = "Jared"
+        url = "https://maven.blamejared.com"
+    }
+    maven {
+        // AMB, Potion of Bees, Productive Bees, Buzzier Bees, Pokecube AIO, and Charm Reforged
+        url "https://www.cursemaven.com"
+    }
+    maven {
+        url "https://nexus.resourcefulbees.com/repository/telepathicgrunt/"
+    }
+    maven {
+        url "https://maven.architectury.dev/"
+    }
+    maven {
+        url "https://maven.shedaniel.me"
+    }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    compileOnly project(":Common")
+
+    runtimeOnly fg.deobf("com.telepathicgrunt:StructureVoidToggle-Forge:${project.structurevoidtoggle_forge}")
+    runtimeOnly fg.deobf("com.telepathicgrunt:CommandStructures-Forge:${project.commandstructures_forge}")
+    compileOnly fg.deobf("curse.maven:productive_bees-377897:${project.productivebees_file_id}")
+
+    implementation fg.deobf("mezz.jei:jei-${project.jei_mc_forge}-forge:${project.jei_forge}")
+    //runtimeOnly fg.deobf("curse.maven:jeed-532286:${jeed}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_forge}")
+    compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${project.rei_forge}")
+    compileOnly fg.deobf("dev.architectury:architectury-forge:${project.architectury_forge}")
+
+    // Switch to `implementation` when testing mod compat
+    //runtimeOnly fg.deobf("dev.architectury:architectury-forge:${project.architectury_forge}")
+    //runtimeOnly fg.deobf("curse.maven:friends_and_foes-602059:3873779")
+    //runtimeOnly fg.deobf("curse.maven:earthmobsmod-333256:3871807")
+    //runtimeOnly fg.deobf("curse.maven:token_enchanter-444421:3559237")
+    //runtimeOnly fg.deobf("curse.maven:silent_lib-242998:3708359")
+
+    //compileOnly fg.deobf("curse.maven:pokecube_aio-285121:${pokecubeaio_file_id}")
+    //runtimeOnly fg.deobf("curse.maven:better_advancements-272515:3562206")
+}
+
+mixin { 
+    add sourceSets.main, "${modid}.refmap.json"
+}
+
+tasks.withType(JavaCompile) {
+    source(project(":Common").sourceSets.main.allSource)
+}
+
+processResources {
+    from project(":Common").sourceSets.main.resources
+}
+
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "${modid}",
+                "Specification-Vendor": "TelepathicGrunt",
+                "Specification-Version": "1", // We are version 1 of ourselves
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${mod_version_forge}+${mc_version}",
+                "Implementation-Vendor" :"TelepathicGrunt",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "${modid}.mixins.json"
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+
+            pom {
+                name = 'TheBumblezone'
+                description = 'An unBEElievable dimension full of bees that becomes REALLY angry if you take their honey!'
+                url = 'https://github.com/TelepathicGrunt/Bumblezone'
+
+                scm {
+                    connection = 'git:https://github.com/TelepathicGrunt/Bumblezone.git'
+                    developerConnection = 'git:https://github.com/TelepathicGrunt/Bumblezone.git'
+                    url = 'https://github.com/TelepathicGrunt/Bumblezone'
+                }
+
+                licenses {
+                    license {
+                        name = 'GNU Lesser General Public License v3.0'
+                        url = 'https://github.com/TelepathicGrunt/Bumblezone/LICENSE'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'telepathic_grunt'
+                        name = 'TelepathicGrunt'
+                        email = 'asarnesespam@gmail.com'
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("https://nexus.resourcefulbees.com/repository/telepathicgrunt/")
+            credentials {
+                username "$System.env.MAVEN_USER"
+                password "$System.env.MAVEN_PASS"
+            }
+        }
+    }
+}
+
+String changelogText = file("CHANGELOG.md").getText('UTF-8')
+
+task publishCurseForgeForge (type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    apiToken = "$System.env.CURSEFORGEKEY"
+    int projectId = 362479
+
+    def mainFile = upload(projectId, jar)
+    mainFile.changelog = changelogText
+    mainFile.addGameVersion("1.19.2")
+    mainFile.changelogType = "markdown"
+    mainFile.releaseType = "release"
+    mainFile.displayName = "The Bumblezone v${project.mod_version_forge} (${project.mc_version} MC)"
+}
+
+modrinth {
+    token = System.getenv("MODRINTH")
+    versionName = "The Bumblezone"
+    versionNumber = project.version
+    projectId = "38tpSycf"
+    uploadFile = jar
+    changelog = changelogText
+    versionType = "RELEASE"
+    gameVersions = ["1.19.2"]
+    loaders = ["forge"]
+}
+
+task checkForRefmap() {
+    if (file("././build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar").exists()) {
+        assert zipTree("././build/libs/the_bumblezone_forge-${project.mod_version_forge}+${project.mc_version}.jar")
+                .matching { include "the_bumblezone.refmap.json" }.getSingleFile() != null
+    }
+}
+
+task buildAndReleaseForge{}
+tasks.checkForRefmap.mustRunAfter tasks.build
+tasks.publish.mustRunAfter tasks.checkForRefmap
+tasks.publishCurseForgeForge.mustRunAfter tasks.publish
+tasks.modrinth.mustRunAfter tasks.publish
+tasks.buildAndReleaseForge.dependsOn(tasks.build, tasks.publish, tasks.publishCurseForgeForge, tasks.modrinth)
