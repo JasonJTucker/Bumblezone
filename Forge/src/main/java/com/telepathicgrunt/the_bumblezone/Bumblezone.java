@@ -24,6 +24,7 @@ import com.telepathicgrunt.the_bumblezone.entities.queentrades.QueensTradeManage
 import com.telepathicgrunt.the_bumblezone.events.Advancements;
 import com.telepathicgrunt.the_bumblezone.items.BeeStinger;
 import com.telepathicgrunt.the_bumblezone.items.dispenserbehavior.DispenserItemSetup;
+import com.telepathicgrunt.the_bumblezone.items.dispenserbehavior.DispenserSpawnEggsBehavior;
 import com.telepathicgrunt.the_bumblezone.modcompat.ModChecker;
 import com.telepathicgrunt.the_bumblezone.modcompat.ModdedBeesBeesSpawning;
 import com.telepathicgrunt.the_bumblezone.modcompat.ProductiveBeesCompatRegs;
@@ -131,6 +132,7 @@ public class Bumblezone{
             BeeAggression.setupBeeHatingList();
             BzStats.initStatEntries();
             BzRecipes.registerBrewingStandRecipes();
+            DispenserSpawnEggsBehavior.registerSpawnEggsDispenserBehavior();
 		});
         MessageHandler.init();
     }
